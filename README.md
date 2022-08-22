@@ -15,6 +15,13 @@ App final do teste Brexs
 - **mux**: usado para registrar as rotas do server REST
 - **logrus**: usado para logs
 
+## Executando os testes
+Na raiz do projeto, executar o comando: `go test ./...`
+
+Só foi desenvolvido os testes sobre as rotas, pois elas próprias já vão validar as regras de negócio da aplicação.
+
+Se eu "mockasse" as funções da pasta `services` nos testes dos serviços, aí sim eu precisaria implementar testes unitários sobre as regras de negócio.
+
 ## Executando
 
 **Modo console**

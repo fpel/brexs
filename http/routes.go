@@ -5,8 +5,6 @@ import (
 	"encoding/json"
 	"io/ioutil"
 
-	"github.com/sirupsen/logrus"
-
 	"net/http"
 
 	"gopkg.in/DataDog/dd-trace-go.v1/contrib/gorilla/mux"
@@ -29,12 +27,12 @@ func (s *Server) handleGetBestRoute(w http.ResponseWriter, r *http.Request) {
 
 	// response := input
 
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/text")
 	w.WriteHeader(http.StatusOK)
-
-	if err := json.NewEncoder(w).Encode(response); err != nil {
-		logrus.WithError(err).Error("an error happened while encoding health check response")
-	}
+	w.Write([]byte(response))
+	// if err := json.NewEncoder(w).Encode(response); err != nil {
+	// 	logrus.WithError(err).Error("an error happened while encoding health check response")
+	// }
 }
 
 func (s *Server) handleSaveNewRoute(w http.ResponseWriter, r *http.Request) {
